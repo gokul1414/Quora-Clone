@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Quzi | Details</title>
+
+    {% include 'base/style.html' %}
+</head>
+<body>
+    {% include 'base/header.html' %}
+
+<section class="hero-area bg-white shadow-sm overflow-hidden pt-40px pb-40px">
+    <span class="stroke-shape stroke-shape-1"></span>
+    <span class="stroke-shape stroke-shape-2"></span>
+    <span class="stroke-shape stroke-shape-3"></span>
+    <span class="stroke-shape stroke-shape-4"></span>
+    <span class="stroke-shape stroke-shape-5"></span>
+    <span class="stroke-shape stroke-shape-6"></span>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9">
+                <div class="hero-content">
+                    <h2 class="section-title pb-2 fs-24 lh-34">Find the best answer to your technical question, <br>
+                        help others answer theirs
+                    </h2>
+                    <p class="lh-26">If you are going to use a passage of Lorem Ipsum, you need to be sure there
+                        <br> isn't anything embarrassing hidden in the middle of text.
+                    </p>
+                    <ul class="generic-list-item pt-3">
+                        <li><span class="icon-element icon-element-xs shadow-sm d-inline-block mr-2"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#6c727c"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg></span> Anybody can ask a question</li>
+                        <li><span class="icon-element icon-element-xs shadow-sm d-inline-block mr-2"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#6c727c"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></span> Anybody can answer</li>
+                        <li><span class="icon-element icon-element-xs shadow-sm d-inline-block mr-2"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 320 512" width="20px"><path fill="#6c727c" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"></path></svg></span> The best answers are voted up and rise to the top</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="hero-btn-box text-right py-3">
+                    <a href="{% url 'ask_question' %}" class="btn theme-btn">Ask a Question</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="question-area pt-40px pb-40px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="question-main-bar mb-50px">
+                    <div class="question-highlight">
+                        <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
+                            <div class="media-body">
+                                <h5 class="fs-20"><a href="#">
+                                    {{question.title}}
+                                    </a></h5>
+                                <div class="meta d-flex flex-wrap align-items-center fs-13 lh-20 py-1">
+                                    <div class="pr-3">
+                                        <span>Asked</span>
+                                        <span class="text-black">{{question.created_at|timesince}}</span>
+                                    </div>
+                                   
+                                </div>
+                                <div class="tags">
+                              
+                                    <a href="#" class="tag-link" id="carts">
+                                       </a>
+                                        <script>
+                                            var selectedValue=`{{question.category}}`;
+                                            const categoryText = {
+                                                '1': 'Analytics',
+                                                '2': 'Communication',
+                                                '3': 'Company',
+                                                '4': 'Language',
+                                                '5': 'Management',
+                                                '6': 'Programmers',
+                                                '7': 'Programs',
+                                                '8': 'University'
+                                            };
+                                            
+                                            const cartLink = document.getElementById('carts');
+                                            cartLink.textContent = categoryText[selectedValue] || '';
+                                        </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question d-flex">
+                        <div class="votes votes-styled w-auto">
+                            <div id="vote" class="upvotejs">
+                                <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
+                                <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
+                                <a class="star" data-toggle="tooltip" data-placement="right" title="Bookmark this question."></a>
+                            </div>
+                        </div>
+                        <div class="question-post-body-wrap flex-grow-1">
+                            <div class="question-post-body">
+                                <p>{{question.title}}</p>
+                                <pre class="code-block custom-scrollbar-styled">
+                                    {{question.details|safe}}
+                                </pre>
+                            </div>
+                      
+                        </div>
+                    </div>
+                    <div class="subheader d-flex align-items-center justify-content-between">
+                        <div class="subheader-title">
+                            <h3 class="fs-16">Answers</h3>
+                        </div>
+                  
+                    </div>
+                    <div class="answer-wrap d-flex">
+                        <div class="votes votes-styled w-auto">
+                            <div id="vote2" class="upvotejs">
+                                <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
+                                <span class="count">
+                                  {{answers_count_this}}
+                                </span>
+                                <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
+                                <a class="star check star-on" data-toggle="tooltip" data-placement="right" title="The question owner accepted this answer"></a>
+                            </div>
+                        </div>
+                        
+                            
+                   
+                            
+                        <div class="answer-body-wrap flex-grow-1">
+                            <div class="answer-body">
+                        {% if answers %}
+
+                                {% for answer in answers %}
+                                <div class="media-body">
+                                    <div class="media media-card user-media align-items-center px-0 border-bottom-0 pb-0">
+                                        <a href="#" class="media-img d-block">
+                                            <img src="https://ui-avatars.com/api/?size=40px&name={{ answer.user.username }}&background=696CFF&color=ffff&length=1&bold=true/" alt class="w-px-20 h-auto rounded-circle" />
+                                        </a>
+                                        <div class="media-body d-flex flex-wrap align-items-center justify-content-between">
+                                            <div>
+                                                <h5 class="pb-1"><a href="#">{{ answer.user.username }}</a></h5>
+                                                <div style="max-height: 400px; overflow-y:auto;">
+                                                    <p class="mb-2 truncate lh-20 fs-15">{{ answer.content|safe }}</p>
+                                                </div>
+                                            </div>
+                                            <small class="meta d-block text-right">
+                                                <span class="d-block lh-18 fs-12">{{ answer.created_at }}</span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                        <div class="alert alert-info mt-4" role="alert">
+                            No Answers found.
+                        </div>
+                    {% endif %}
+                            </div>
+                        </div>
+                        <div class="subheader">
+                            <div class="subheader-title">
+                                <h3 class="fs-16"></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subheader">
+                        <div class="subheader-title">
+                            <h3 class="fs-16"></h3>
+                        </div>
+                    </div>
+                        <div class="pager pt-30px px-3">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination generic-pagination pr-1">
+                                    {% if answers.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1" aria-label="First">
+                                            <span aria-hidden="true"><i class="la la-angle-double-left"></i></span>
+                                            <span class="sr-only">First</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ answers.previous_page_number }}" aria-label="Previous">
+                                            <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                        
+                                    {% for i in answers.paginator.page_range %}
+                                    <li class="page-item {% if answers.number == i %}active{% endif %}">
+                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                    </li>
+                                    {% endfor %}
+                        
+                                    {% if answers.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ answers.next_page_number }}" aria-label="Next">
+                                            <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ answers.paginator.num_pages }}" aria-label="Last">
+                                            <span aria-hidden="true"><i class="la la-angle-double-right"></i></span>
+                                            <span class="sr-only">Last</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            <p class="fs-13 pt-2">Showing {{ answers.start_index }}-{{ answers.end_index }} of {{ answers.paginator.count }} answers</p>
+                        </div>
+                        
+                    <div class="post-form">
+                        <form method="post" action="{% url 'post_answer' question.pk %}" class="pt-3">
+                            {% csrf_token %}
+                            <div class="input-box">
+                                <label class="fs-14 text-black lh-20 fw-medium">Your Answer</label>
+                                <div class="form-group">
+                                    <textarea class="form-control form--control form-control-sm fs-13 user-text-editor" name="user_answer" rows="6" placeholder="Your answer here..."></textarea>
+                                </div>
+                            </div>
+                            <button class="btn theme-btn theme-btn-sm" type="submit">Post Your Answer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="card card-item">
+                        <div class="card-body">
+                            <h3 class="fs-17 pb-3">Number Achievement</h3>
+                            <div class="divider"><span></span></div>
+                            <div class="row no-gutters text-center">
+                                <div class="col-lg-6 responsive-column-half">
+                                    <div class="icon-box pt-3">
+                                        <span class="fs-20 fw-bold text-color">{{questions_count}}</span>
+                                        <p class="fs-14">Questions</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 responsive-column-half">
+                                    <div class="icon-box pt-3">
+                                        <span class="fs-20 fw-bold text-color-2">{{answers_count}}</span>
+                                        <p class="fs-14">Answers</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 responsive-column-half">
+                                    <div class="icon-box pt-3">
+                                        <span class="fs-20 fw-bold text-color-4">{{users_count}}</span>
+                                        <p class="fs-14">Users</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="card card-item">
+                        <div class="card-body">
+                            <h3 class="fs-17 pb-3">Related Questions</h3>
+                            <div class="divider"><span></span></div>
+                            <div class="sidebar-questions pt-3">
+                                {% for question in recent_questions %}
+                                <div class="media media-card media--card media--card-2">
+                                    <div class="media-body">
+                                        <h5><a href="{% url 'question_details' question.pk %}">{{ question.title }}</a></h5>
+                                        
+                                        <small class="meta">
+                                            <span class="pr-1">{{ question.created_at|timesince }}</span>
+                                            <span class="pr-1">. by</span>
+                                            <a href="" class="author">{{ question.user.username }}</a>
+                                        </small>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-area pt-80px bg-dark position-relative">
+    <span class="vertical-bar-shape vertical-bar-shape-1"></span>
+    <span class="vertical-bar-shape vertical-bar-shape-2"></span>
+    <span class="vertical-bar-shape vertical-bar-shape-3"></span>
+    <span class="vertical-bar-shape vertical-bar-shape-4"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 responsive-column-half">
+                <div class="footer-item">
+                    <h3 class="fs-18 fw-bold pb-2 text-white">Company</h3>
+                    <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertising</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 responsive-column-half">
+                <div class="footer-item">
+                    <h3 class="fs-18 fw-bold pb-2 text-white">Legal Stuff</h3>
+                    <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 responsive-column-half">
+                <div class="footer-item">
+                    <h3 class="fs-18 fw-bold pb-2 text-white">Help</h3>
+                    <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                        <li><a href="#">Knowledge Base</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 responsive-column-half">
+                <div class="footer-item">
+                    <h3 class="fs-18 fw-bold pb-2 text-white">Connect with us</h3>
+                    <ul class="generic-list-item generic-list-item-hover-underline pt-3 generic-list-item-white">
+                        <li><a href="#"><i class="la la-facebook mr-1"></i> Facebook</a></li>
+                        <li><a href="#"><i class="la la-twitter mr-1"></i> Twitter</a></li>
+                        <li><a href="#"><i class="la la-linkedin mr-1"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="la la-instagram mr-1"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="border-top-gray my-5">
+    <div class="container">
+        <div class="row align-items-center pb-4 copyright-wrap">
+            <div class="col-lg-6">
+                <a href="index.html" class="d-inline-block">
+                    <img src="images/logo-white.png" alt="footer logo" class="footer-logo">
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <p class="copyright-desc text-right fs-14">Copyright &copy; 2021 <a href="https://techydevs.com/">TechyDevs</a> Inc.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+          END FOOTER AREA
+================================= -->
+
+
+<div id="back-to-top" data-toggle="tooltip" data-placement="top" title="Return to top">
+    <i class="la la-arrow-up"></i>
+</div>
+
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery-te-1.4.0.min.js"></script>
+<script src="js/upvote.vanilla.js"></script>
+<script src="js/upvote-script.js"></script>
+<script src="js/selectize.min.js"></script>
+<script src="js/jquery.multi-file.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+
+</html>

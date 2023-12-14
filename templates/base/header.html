@@ -1,0 +1,85 @@
+{% include 'base/style.html' %}
+{% load static %}
+    <header class="header-area bg-white shadow-sm">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2">
+                    <div class="logo-box">
+                        <a href="{% url 'home' %}" class="logo"><img src="{% static 'images/logo-black.png' %}" style="
+                            max-width: 140px;
+                            max-height: 55px;
+                        "  alt="logo"></a>
+                        <div class="user-action">
+                            <div class="search-menu-toggle icon-element icon-element-xs shadow-sm mr-1" data-toggle="tooltip" data-placement="top" title="Search">
+                                <i class="la la-search"></i>
+                            </div>
+                            <div class="off-canvas-menu-toggle icon-element icon-element-xs shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
+                                <i class="la la-bars"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="menu-wrapper border-left border-left-gray pl-4 justify-content-end">
+                        <nav class="menu-bar mr-auto menu--bar">
+                            <ul>
+                                <li>
+                                    <a href="{% url 'home' %}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'my_questions' %}">My Questions</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <form method="post" class="mr-2">
+                            <div class="form-group mb-0">
+                                <input class="form-control form--control h-auto py-2" type="text" name="search" placeholder="Type your search words...">
+                                <button class="form-btn" type="button"><i class="la la-search"></i></button>
+                            </div>
+                        </form>
+                        
+                        <div class="avatar avatar-online pr-3" style="">
+                            <img src="https://ui-avatars.com/api/?size=40px&name={{request.user.username}}&background=696CFF&color=ffff&length=1&bold=true/" alt class="w-px-20 h-auto rounded-circle" />
+                  
+                          </div>
+                        <div class="nav-right-button">
+                            <a href="{% url 'logout' %}" class="btn theme-btn theme-btn-sm theme-btn-outline mr-1">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="off-canvas-menu custom-scrollbar-styled">
+            <div class="off-canvas-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+                <i class="la la-times"></i>
+            </div>
+            <ul class="generic-list-item off-canvas-menu-list pt-90px">
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'my_questions' %}">My Questions</a>
+                </li>
+            </ul>
+            <div class="off-canvas-btn-box px-4 pt-5 text-center">
+                <img src="https://ui-avatars.com/api/?size=40px&name={{request.user.username}}&background=696CFF&color=ffff&length=1&bold=true/" alt class="w-px-20 h-auto rounded-circle" />
+                <span class="fs-15 fw-medium d-inline-block mx-2">Or</span>
+                <a href="{% url 'logout' %}" class="btn theme-btn theme-btn-sm theme-btn-outline mr-1">Logout</a>
+
+            </div>
+        </div>
+        <div class="mobile-search-form">
+            <div class="d-flex align-items-center">
+                <form method="post" class="flex-grow-1 mr-3">
+                    <div class="form-group mb-0">
+                        <input class="form-control form--control pl-40px" type="text" name="search" placeholder="Type your search words...">
+                        <span class="la la-search input-icon"></span>
+                    </div>
+                </form>
+                <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+                    <i class="la la-times"></i>
+                </div>
+            </div>
+        </div>
+        <div class="body-overlay"></div>
+    </header>
